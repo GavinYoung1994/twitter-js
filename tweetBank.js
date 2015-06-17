@@ -35,6 +35,6 @@ var getFakeTweet = function() {
 for(var i=0; i<10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
-console.log(data);
+//console.log(data);
 
 //console.log(module.exports.find({name: 'Anna'}));

@@ -4,6 +4,15 @@ var app = express();
 var swig = require('swig');
 var routes = require('./routes/');
 var bodyParser = require('body-parser');
+var socketio = require('socket.io');
+var server = app.listen(3000, function(){
+
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('App lisening at http://%s:%s', host, port);
+});
+var io = socketio.listen(server);
 
 swig.setDefaults({ cache: false });
 
@@ -16,7 +25,7 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname +'/views')
 
-app.use('/', routes);
+app.use('/', routes(io));
 app.use(express.static(__dirname + '/public'));
 
 
@@ -27,11 +36,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 
-var server = app.listen(3000, function(){
 
-  var host = server.address().address;
-  var port = server.address().port;
 
-  console.log('App lisening at http://%s:%s', host, port);
-});
+
 
