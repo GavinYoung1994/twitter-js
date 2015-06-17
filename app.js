@@ -3,6 +3,8 @@ var morgan = require('morgan');
 var app = express();
 var swig = require('swig');
 
+swig.setDefaults({ cache: false });
+
 app.use(morgan('dev'));
 
 app.engine('html', swig.renderFile);
@@ -11,12 +13,10 @@ app.set('views', __dirname +'/views')
 
 
 app.get('/', function(req, res){
-  res.send('Server Listening');
+  var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+  res.render( 'index', {title: 'Hall of Fame', people: people} );
 });
 
-app.get('/news', function(req, res){
-  res.send('News');
-});
 
 var server = app.listen(3000, function(){
 
