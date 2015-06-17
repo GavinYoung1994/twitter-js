@@ -8,6 +8,10 @@ app.get('/', function(req, res){
   res.send('Server Listening');
 });
 
+app.get('/news', function(req, res){
+  res.send('News');
+});
+
 var server = app.listen(3000, function(){
 
   var host = server.address().address;
