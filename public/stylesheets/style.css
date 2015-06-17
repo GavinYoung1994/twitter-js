@@ -37,6 +37,21 @@ body {
   padding-right: 15px;
 }
  
+.col-md-9{
+  position: relative;
+  left: 75px;
+} 
+
+.names{
+  float: center;
+  color: #0099FF;
+  font-weight: bold;
+}
+.tweets{
+  /*position: relative;
+  left: 50px;*/
+  padding-left: 20px;
+}
 code {
   font-size: 80%;
 }
