@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var app = express();
 var swig = require('swig');
+var routes = require('./routes/');
 
 swig.setDefaults({ cache: false });
 
@@ -10,6 +11,9 @@ app.use(morgan('dev'));
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname +'/views')
+
+app.use('/', routes);
+app.use(express.static(__dirname + '/public'));
 
 
 // app.get('/', function(req, res){
